@@ -1,36 +1,16 @@
-<html>
-<head>
-<title>SavingAccount.java</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-.s0 { color: #cf8e6d;}
-.s1 { color: #bcbec4;}
-.s2 { color: #bcbec4;}
-.s3 { color: #2aacb8;}
-.s4 { color: #6aab73;}
-</style>
-</head>
-<body bgcolor="#1e1f22">
-<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
-<tr><td><center>
-<font face="Arial, Helvetica" color="#000000">
-SavingAccount.java</font>
-</center></td></tr></table>
-<pre><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">time</span><span class="s2">.</span><span class="s1">LocalDateTime</span><span class="s2">;</span>
+import java.time.LocalDateTime;
 
-<span class="s0">class </span><span class="s1">SavingsAccount </span><span class="s0">extends </span><span class="s1">Account </span><span class="s2">{</span>
-    <span class="s0">private double </span><span class="s1">interestRate</span><span class="s2">;</span>
+class SavingsAccount extends Account {
+    private double interestRate;
 
-    <span class="s0">public </span><span class="s1">SavingsAccount</span><span class="s2">(</span><span class="s1">String accountNumber</span><span class="s2">, </span><span class="s1">String accountHolderName</span><span class="s2">, </span><span class="s0">double </span><span class="s1">balance</span><span class="s2">, </span><span class="s1">String upiId</span><span class="s2">, </span><span class="s0">double </span><span class="s1">interestRate</span><span class="s2">) {</span>
-        <span class="s0">super</span><span class="s2">(</span><span class="s1">accountNumber</span><span class="s2">, </span><span class="s1">accountHolderName</span><span class="s2">, </span><span class="s1">balance</span><span class="s2">, </span><span class="s1">upiId</span><span class="s2">);</span>
-        <span class="s0">this</span><span class="s2">.</span><span class="s1">interestRate </span><span class="s2">= </span><span class="s1">interestRate</span><span class="s2">;</span>
-    <span class="s2">}</span>
+    public SavingsAccount(String accountNumber, String accountHolderName, double balance, String upiId, double interestRate) {
+        super(accountNumber, accountHolderName, balance, upiId);
+        this.interestRate = interestRate;
+    }
 
-    <span class="s0">public void </span><span class="s1">applyInterest</span><span class="s2">() {</span>
-        <span class="s0">double </span><span class="s1">interest </span><span class="s2">= </span><span class="s1">balance </span><span class="s2">* (</span><span class="s1">interestRate </span><span class="s2">/ </span><span class="s3">100</span><span class="s2">);</span>
-        <span class="s1">deposit</span><span class="s2">(</span><span class="s1">interest</span><span class="s2">);</span>
-        <span class="s1">transactions</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s4">&quot;Interest added: &quot; </span><span class="s2">+ </span><span class="s1">interest </span><span class="s2">+ </span><span class="s4">&quot; at &quot; </span><span class="s2">+  </span><span class="s1">LocalDateTime</span><span class="s2">.</span><span class="s1">now</span><span class="s2">());</span>
-    <span class="s2">}</span>
-<span class="s2">}</span></pre>
-</body>
-</html>
+    public void applyInterest() {
+        double interest = balance * (interestRate / 100);
+        deposit(interest);
+        transactions.add("Interest added: " + interest + " at " +  LocalDateTime.now());
+    }
+}
